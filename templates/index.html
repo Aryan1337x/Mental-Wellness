@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="card welcome-hero">
+    <h1>Welcome to Your Mental Wellness Journal</h1>
+    <p style="font-size: 1.2rem; margin-bottom: 2rem;">
+        A private, personal space to track your mood, energy, and thoughts.
+    </p>
+
+    <div style="display: flex; justify-content: center; gap: 20px;">
+        <a href="{{ url_for('log_mood') }}" class="btn">Log Your Mood</a>
+        <a href="{{ url_for('journal') }}" class="btn" style="background-color: var(--accent-color);">Write in
+            Journal</a>
+    </div>
+
+    <p style="margin-top: 3rem; font-style: italic; font-size: 0.9rem; color: #718096;">
+        Disclaimer: This tool is for personal reflection only and does not provide medical advice or diagnosis.
+    </p>
+</div>
+{% endblock %}
