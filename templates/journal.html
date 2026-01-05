@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="card">
+    <h2>Daily Journal</h2>
+    <form method="post">
+        <input type="hidden" name="id" id="entry-id">
+        <label for="content">Write your thoughts...</label>
+        <textarea name="content" id="content" rows="6" required placeholder="What's on your mind today?"></textarea>
+        <button type="submit" id="submit-btn">Save Entry</button>
+        <button type="button" id="cancel-btn" style="background-color: #a0aec0; display: none;"
+            onclick="resetForm()">Cancel</button>
+    </form>
+</div>
+
+<div class="entries-list">
+    <h3>Previous Entries</h3>
+    {% if entries %}
+    {% for entry in entries %}
+    <div class="card" style="padding: 1.5rem; border-left: 5px solid var(--calm-green);">
+        <div class="entry-meta">
+            <strong>{{ entry['date'] }}</strong>
+            <a href="#" onclick="editEntry('{{ entry['id'] }}', '{{ entry['content'] }}')"
+                style="float: right; color: var(--primary-color);">Edit</a>
+        </div>
+        <p style="white-space: pre-wrap;">{{ entry['content'] }}</p>
+    </div>
+    {% endfor %}
+    {% else %}
+    <p>No journal entries yet. Start writing above!</p>
+    {% endif %}
+</div>
+
+<script>
+    function editEntry(id, content) {
+        document.getElementById('entry-id').value = id;
+        document.getElementById('content').value = content;
+        document.getElementById('submit-btn').innerText = 'Update Entry';
+        document.getElementById('cancel-btn').style.display = 'inline-block';
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    function resetForm() {
+        document.getElementById('entry-id').value = '';
+        document.getElementById('content').value = '';
+        document.getElementById('submit-btn').innerText = 'Save Entry';
+        document.getElementById('cancel-btn').style.display = 'none';
+    }
+</script>
+{% endblock %}
