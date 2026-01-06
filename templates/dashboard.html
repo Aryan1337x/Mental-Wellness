@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="card">
+    <h2>Mood Insights</h2>
+    {% if data.insights %}
+    {% for insight in data.insights %}
+    <div class="insight-box">
+        {{ insight }}
+    </div>
+    {% endfor %}
+    {% else %}
+    <p>Log more data to see insights!</p>
+    {% endif %}
+</div>
+
+<div class="card">
+    <h3>Mood Frequency</h3>
+    <div class="chart-container">
+        <canvas id="moodChart"></canvas>
+    </div>
+</div>
+
+<div class="card">
+    <h3>Energy / Mood Timeline</h3>
+    <div class="chart-container">
+        <canvas id="energyChart"></canvas>
+    </div>
+</div>
+
+<script>
+    const chartData = {{ data | tojson }};
+</script>
+<script src="{{ url_for('static', filename='js/charts.js') }}"></script>
+{% endblock %}
