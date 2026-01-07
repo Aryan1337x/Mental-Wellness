@@ -1,0 +1,138 @@
+:root {
+    --bg-color: #f0f4f8;
+    --card-bg: #ffffff;
+    --text-color: #2d3748;
+    --primary-color: #5a67d8;
+    --accent-color: #9f7aea;
+    --success-color: #68d391;
+    --calm-green: #c6f6d5;
+    --calm-blue: #bee3f8;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    margin: 0;
+    padding: 0;
+    line-height: 1.6;
+}
+
+.container {
+    width: 90%;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+nav {
+    background: var(--card-bg);
+    padding: 1rem 0;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    margin-bottom: 2rem;
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+    text-align: center;
+    margin: 0;
+}
+
+nav ul li {
+    display: inline;
+    margin: 0 15px;
+}
+
+nav a {
+    text-decoration: none;
+    color: var(--text-color);
+    font-weight: 600;
+    font-size: 1.1rem;
+    transition: color 0.3s;
+}
+
+nav a:hover,
+nav a.active {
+    color: var(--primary-color);
+}
+
+.card {
+    background: var(--card-bg);
+    border-radius: 12px;
+    padding: 2rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+    margin-bottom: 1.5rem;
+}
+
+h1,
+h2,
+h3 {
+    color: var(--primary-color);
+    margin-top: 0;
+}
+
+button,
+.btn {
+    display: inline-block;
+    background-color: var(--primary-color);
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    text-decoration: none;
+    font-size: 1rem;
+    transition: background 0.3s;
+}
+
+button:hover,
+.btn:hover {
+    background-color: #4c51bf;
+}
+
+input,
+textarea,
+select {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0 20px 0;
+    border: 1px solid #e2e8f0;
+    border-radius: 6px;
+    font-family: inherit;
+    box-sizing: border-box;
+}
+
+.flash-message {
+    padding: 10px;
+    background-color: var(--calm-green);
+    color: #22543d;
+    border-radius: 6px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.entry-meta {
+    font-size: 0.9em;
+    color: #718096;
+    margin-bottom: 10px;
+}
+
+.welcome-hero {
+    text-align: center;
+    padding: 3rem 1rem;
+}
+
+.chart-container {
+    position: relative;
+    height: 300px;
+    width: 100%;
+    margin-bottom: 2rem;
+}
+
+.insight-box {
+    background-color: var(--calm-blue);
+    padding: 15px;
+    border-radius: 8px;
+    margin-top: 10px;
+}
