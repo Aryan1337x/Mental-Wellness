@@ -1,33 +1,63 @@
-{% extends 'base.html' %}
+    <!DOCTYPE html>
+    <html lang="en">
 
-{% block content %}
-<div class="card">
-    <h2>Log Your Mood</h2>
-    <p>Date: <strong>{{ date }}</strong></p>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Mental Wellness Journal</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    </head>
 
-    <form method="post">
-        <label for="mood">How are you feeling today?</label>
-        <select name="mood" id="mood" required>
-            <option value="" disabled selected>Select Mood...</option>
-            <option value="Happy">Happy 😊</option>
-            <option value="Neutral">Neutral 😐</option>
-            <option value="Stressed">Stressed 😫</option>
-            <option value="Tired">Tired 😴</option>
-            <option value="Sad">Sad 😢</option>
-        </select>
+    <body>
 
-        <label for="energy">Energy Level</label>
-        <select name="energy" id="energy" required>
-            <option value="" disabled selected>Select Energy...</option>
-            <option value="High">High ⚡</option>
-            <option value="Medium">Medium 🔋</option>
-            <option value="Low">Low 🪫</option>
-        </select>
+        <nav>
+            <div class="container">
+                <ul>
+                    <li><a href="{{ url_for('main.index') }}">Home</a></li>
+                    <li><a href="{{ url_for('main.log_mood') }}">Log Mood</a></li>
+                    <li><a href="{{ url_for('main.journal') }}">Journal</a></li>
+                    <li><a href="{{ url_for('main.dashboard') }}">Dashboard</a></li>
+                </ul>
+            </div>
+        </nav>
 
-        <label for="note">Optional Note</label>
-        <textarea name="note" id="note" rows="3" placeholder="Briefly, why do you feel this way?"></textarea>
+        <div class="container">
 
-        <button type="submit">Save Log</button>
-    </form>
-</div>
-{% endblock %}
+            <div class="card">
+                <h2>Log Your Mood</h2>
+                <p>Date: <strong>{{ date }}</strong></p>
+
+                <form method="post">
+                    <label for="mood">How are you feeling today?</label>
+                    <select name="mood" id="mood" required>
+                        <option value="" disabled selected>Select Mood...</option>
+                        <option value="Happy">Happy 😊</option>
+                        <option value="Neutral">Neutral 😐</option>
+                        <option value="Stressed">Stressed 😫</option>
+                        <option value="Tired">Tired 😴</option>
+                        <option value="Sad">Sad 😢</option>
+                    </select>
+
+                    <label for="energy">Energy Level</label>
+                    <select name="energy" id="energy" required>
+                        <option value="" disabled selected>Select Energy...</option>
+                        <option value="High">High ⚡</option>
+                        <option value="Medium">Medium 🔋</option>
+                        <option value="Low">Low 🪫</option>
+                    </select>
+
+                    <label for="note">Optional Note</label>
+                    <textarea name="note" id="note" rows="3" placeholder="Briefly, why do you feel this way?"></textarea>
+
+                    <button type="submit">Save Log</button>
+                </form>
+            </div>
+        </div>
+
+    </body>
+
+    </html>

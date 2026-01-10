@@ -1,20 +1,51 @@
-{% extends 'base.html' %}
+<!DOCTYPE html>
+<html lang="en">
 
-{% block content %}
-<div class="card welcome-hero">
-    <h1>Welcome to Your Mental Wellness Journal</h1>
-    <p style="font-size: 1.2rem; margin-bottom: 2rem;">
-        A private, personal space to track your mood, energy, and thoughts.
-    </p>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mental Wellness Journal</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
 
-    <div style="display: flex; justify-content: center; gap: 20px;">
-        <a href="{{ url_for('log_mood') }}" class="btn">Log Your Mood</a>
-        <a href="{{ url_for('journal') }}" class="btn" style="background-color: var(--accent-color);">Write in
-            Journal</a>
+<body>
+
+    <nav>
+        <div class="container">
+            <ul>
+                <li><a href="{{ url_for('main.index') }}">Home</a></li>
+                <li><a href="{{ url_for('main.log_mood') }}">Log Mood</a></li>
+                <li><a href="{{ url_for('main.journal') }}">Journal</a></li>
+                <li><a href="{{ url_for('main.dashboard') }}">Dashboard</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container">
+
+        <div class="card welcome-hero">
+            <h1>Welcome to Your Mental Wellness Journal</h1>
+            <p style="font-size: 1.2rem; margin-bottom: 2rem;">
+                A private, personal space to track your mood, energy, and thoughts.
+            </p>
+
+            <div style="display: flex; justify-content: center; gap: 20px;">
+                <a href="{{ url_for('main.log_mood') }}" class="btn">Log Your Mood</a>
+                <a href="{{ url_for('main.journal') }}" class="btn" style="background-color: var(--accent-color);">Write
+                    in
+                    Journal</a>
+            </div>
+
+            <p style="margin-top: 3rem; font-style: italic; font-size: 0.9rem; color: #718096;">
+                Disclaimer: This tool is for personal reflection only and does not provide medical advice or diagnosis.
+            </p>
+        </div>
     </div>
 
-    <p style="margin-top: 3rem; font-style: italic; font-size: 0.9rem; color: #718096;">
-        Disclaimer: This tool is for personal reflection only and does not provide medical advice or diagnosis.
-    </p>
-</div>
-{% endblock %}
+</body>
+
+</html>

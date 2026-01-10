@@ -1,35 +1,65 @@
-{% extends 'base.html' %}
+<!DOCTYPE html>
+<html lang="en">
 
-{% block content %}
-<div class="card">
-    <h2>Mood Insights</h2>
-    {% if data.insights %}
-    {% for insight in data.insights %}
-    <div class="insight-box">
-        {{ insight }}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mental Wellness Journal</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body>
+
+    <nav>
+        <div class="container">
+            <ul>
+                <li><a href="{{ url_for('main.index') }}">Home</a></li>
+                <li><a href="{{ url_for('main.log_mood') }}">Log Mood</a></li>
+                <li><a href="{{ url_for('main.journal') }}">Journal</a></li>
+                <li><a href="{{ url_for('main.dashboard') }}">Dashboard</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container">
+
+
+        <div class="card">
+            <h2>Mood Insights</h2>
+
+
+            <div class="insight-box">
+                You often feel <strong>Happy</strong> when your energy is <strong>High</strong>.
+            </div>
+            <div class="insight-box">
+                You've logged 5 entries this week. Keep it up!
+            </div>
+        </div>
+
+        <div class="card">
+            <h3>Mood Frequency</h3>
+            <div class="chart-container">
+                <canvas id="moodChart"></canvas>
+            </div>
+        </div>
+
+        <div class="card">
+            <h3>Energy / Mood Timeline</h3>
+            <div class="chart-container">
+                <canvas id="energyChart"></canvas>
+            </div>
+        </div>
+
+        <script>
+            const chartData = {{ data | tojson }};
+        </script>
+        <script src="{{ url_for('static', filename='js/charts.js') }}"></script>
     </div>
-    {% endfor %}
-    {% else %}
-    <p>Log more data to see insights!</p>
-    {% endif %}
-</div>
 
-<div class="card">
-    <h3>Mood Frequency</h3>
-    <div class="chart-container">
-        <canvas id="moodChart"></canvas>
-    </div>
-</div>
+</body>
 
-<div class="card">
-    <h3>Energy / Mood Timeline</h3>
-    <div class="chart-container">
-        <canvas id="energyChart"></canvas>
-    </div>
-</div>
-
-<script>
-    const chartData = {{ data | tojson }};
-</script>
-<script src="{{ url_for('static', filename='js/charts.js') }}"></script>
-{% endblock %}
+</html>
